@@ -36,10 +36,6 @@ class Bank(User):
         else:
             print("Your current balance is lower than the amount you want to withdraw.")
         
-        
-martina = Bank("Martina Kolar", "Zagrebačka avenija 12", "23.06.2003.")
-martina.deposit(100)
-martina.withdraw_money(90)
-martina.view_balance()
+
         
 
