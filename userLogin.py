@@ -1,5 +1,5 @@
-def VerifyLogin():
-    
+def verifyLogin():
+    print("SIGN IN")
     username = input("Username: ")
     password = input("Password: ")
 
@@ -13,7 +13,8 @@ def VerifyLogin():
             else:
                 print("Login failed.")
                 return False
+        file.close()
 
 
-VerifyLogin()
+verifyLogin()
 
