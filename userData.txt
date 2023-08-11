@@ -1,4 +1,1 @@
-marty|what
-pa_ono|ehhh
-marty|& C:/Users/user/AppData/Local/Programs/Python/Python311/python.exe c:/Users/user/Documents/.MyPythonProjects/BankingSystem/userRegister.py
-& C:/Users/user/AppData/Local/Programs/Python/Python311/python.exe c:/Users/user/Documents/.MyPythonProjects/BankingSystem/userRegister.py|& C:/Users/user/AppData/Local/Programs/Python/Python311/python.exe c:/Users/user/Documents/.MyPythonProjects/BankingSystem/userRegister.py
+

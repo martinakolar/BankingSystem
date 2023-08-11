@@ -1,6 +1,3 @@
-import userRegister, userLogin
-
-
 class User():
     
     def __init__(self, full_name, address, date_of_birth, initial_deposit_amount=0):
@@ -9,20 +6,21 @@ class User():
         self.date_of_birth = date_of_birth
         self.initial_deposit_amount = initial_deposit_amount
         
-        
-    def user_details(self):
-        print("Personal details")
-        print(f"Name: {self.full_name}")
-        print(f"Address: {self.address}")
-        print(f"Date of birth: {self.date_of_birth}")
-        print(f"Initial deposit amount: €{self.initial_deposit_amount}")
-        
+
+
 
 class Bank(User):
     
     def __init__(self, full_name, address, date_of_birth, initial_deposit_amount=0):
         super().__init__(full_name, address, date_of_birth, initial_deposit_amount=0)
         self.balance = initial_deposit_amount
+
+    def user_details(self):
+        print("Personal details")
+        print(f"Name: {self.full_name}")
+        print(f"Address: {self.address}")
+        print(f"Date of birth: {self.date_of_birth}")
+        print(f"Initial deposit amount: €{self.initial_deposit_amount}")
         
         
     def deposit(self, amount):
@@ -45,5 +43,4 @@ class Bank(User):
             print("Your current balance is lower than the amount you want to withdraw.")
         
 
-        
 

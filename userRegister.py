@@ -1,29 +1,40 @@
 def registration():
     print("SIGN UP")
-    min_username_len = 4
 
-    username = input("Username: ")
-    while len(username) < min_username_len or checkingIfUserAlreadyRegistered(username) == False:
-        if len(username) < min_username_len:
-            print("Username must be at least 4 characters long!")
+    #*registering the username
+    min_username_and_password_len = 4
+    while True:
         username = input("Username: ")
 
-    while True:
-        password = input("Password: ")
-        while len(password) < 3:
-            print("Password is too short!")
-            password = input("Password: ")
-        confirm_password = input("Confirm password: ")
+        if checkingIfUserAlreadyRegistered(username) == False:
+            print("This user has already been registered.")
+            continue
 
+        if len(username) < min_username_and_password_len:
+            print("Username must be at least 4 characters long!")
+            continue
+        else:
+            break
+
+    #*registering the password
+    while True:
+
+        password = input("Password: ")
+        while len(password) < min_username_and_password_len:
+            print("Password must be at least 4 characters long!")
+            password = input("Password: ")
+            
+  
+        confirm_password = input("Confirm password: ")
         if confirm_password == password:
             with open("userData.txt", "a") as file:
                 file.write(username + "|" + password + "\n")
-                file.close()
                 print("Registration successful!")
-                break
+                return True
+            file.close()
         else:
             print("Passwords do not match!")
-            continue
+
 
 def checkingIfUserAlreadyRegistered(username):
         with open("userData.txt", "r") as file:
@@ -31,10 +42,9 @@ def checkingIfUserAlreadyRegistered(username):
             for line in lines:
                 data = line.strip().split("|")
                 if data[0] == username:
-                    print("This user has already been registered.")
                     return False
-                else:
-                    return True
+            else:
+                return True
             file.close()
                 
 
