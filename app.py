@@ -12,15 +12,17 @@ def main():
 
         user_choice = int(input("Enter your choice: "))
         if user_choice == 1:
-            registration()
+            username = registration()
             break
         elif user_choice == 2:
-            verifyLogin()
+            username = verifyLogin()
             break
         else:
             print("Invalid choice")
+            continue
 
-    bank = Bank("username", "address", "25.08.2001.")
+    userstuff = User(username, date_of_birth, address)
+    print(userstuff.user_details())
 
     """
     while True:

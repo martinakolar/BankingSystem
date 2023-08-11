@@ -13,11 +13,10 @@ def verifyLogin():
 
             if data[0] == username and data[1] == password:
                 print("Login successful!")
-                return True
+                return username
         else:
             print("Login failed.")
             return False
         file.close()
 
 
-verifyLogin()
