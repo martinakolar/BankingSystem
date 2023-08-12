@@ -38,17 +38,17 @@ def registration():
     day_of_birth = int(input("Day(DD): "))
     while day_of_birth < 1 or day_of_birth > 31:
         print("Day of birth must be between 1 and 31!")
-        day_of_birth = input("Day(DD): ")
+        day_of_birth = int(input("Day(DD): "))
 
     month_of_birth = int(input("Month(MM): "))
     while month_of_birth < 1 or month_of_birth > 12:
         print("Month of birth must be between 1 and 12!")
-        month_of_birth = input("Month(MM): ")
+        month_of_birth = int(input("Month(MM): "))
 
     year_of_birth = int(input("Year(YYYY): "))
     while year_of_birth < 1900 or year_of_birth > 2023:
         print("Year of birth must be between 1900 and 2023!")
-        year_of_birth = input("Year(YYYY): ")
+        year_of_birth = int(input("Year(YYYY): "))
 
 
     date_of_birth = f"{day_of_birth}.{month_of_birth}.{year_of_birth}"

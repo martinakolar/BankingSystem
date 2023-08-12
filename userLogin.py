@@ -5,7 +5,6 @@ def verifyLogin():
 
     with open("userData.txt", "r") as file:
         lines = file.readlines()
-        print(lines)
 
         for line in lines:
 
@@ -18,5 +17,7 @@ def verifyLogin():
             print("Login failed.")
             return False
         file.close()
+
+verifyLogin()
 
 
