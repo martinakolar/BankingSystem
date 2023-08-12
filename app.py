@@ -5,7 +5,6 @@ from userLogin import verifyLogin
 
 def main():
     # * log in or register
-    """
     while True:            
         print("Welcome to the Banking System")
         print("1. Register")
@@ -20,9 +19,20 @@ def main():
             break
         else:
             print("Invalid choice")
-            continue"""
-    username, date_of_birth, home_address = verifyLogin()
-    print(username, date_of_birth, home_address)
+            continue
+
+    initial_deposit_bool = input("Do you wish to make an initial deposit? (y/n): ").lower() 
+    if initial_deposit_bool == "y":
+        initial_deposit_amount = float(input("Enter your initial deposit amount: "))
+        print("Initial deposit amount successfully made.")
+    else:
+        initial_deposit_amount = 0
+
+
+    user = User(username, date_of_birth, home_address, initial_deposit_amount)
+    info = user.user_details()
+    print(info)
+
 
     """
     while True:
