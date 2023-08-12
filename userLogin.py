@@ -3,6 +3,8 @@ def verifyLogin():
     username = input("Username: ")
     password = input("Password: ")
 
+    logged_in = False
+
     with open("userData.txt", "r") as file:
         lines = file.readlines()
 
@@ -12,12 +14,29 @@ def verifyLogin():
 
             if data[0] == username and data[1] == password:
                 print("Login successful!")
-                return username
-        else:
+                logged_in = True
+                date_of_birth, home_address = catchOtherInfo(username)
+
+        if not logged_in:
             print("Login failed.")
-            return False
         file.close()
 
-verifyLogin()
+        return username, date_of_birth, home_address
+
+
+def catchOtherInfo(username):
+    with open("userData.txt", "r") as file:
+        lines = file.readlines()
+
+        for line in lines:
+
+            data = line.strip().split("|")
+
+            if data[0] == username:
+                date_of_birth = data[2]
+                home_address = data[3]
+        file.close()
+
+    return date_of_birth, home_address
 
 

@@ -5,6 +5,7 @@ from userLogin import verifyLogin
 
 def main():
     # * log in or register
+    """
     while True:            
         print("Welcome to the Banking System")
         print("1. Register")
@@ -12,17 +13,16 @@ def main():
 
         user_choice = int(input("Enter your choice: "))
         if user_choice == 1:
-            username = registration()
+            username, date_of_birth, home_address = registration()
             break
         elif user_choice == 2:
-            username = verifyLogin()
+            username, date_of_birth, home_address = verifyLogin()
             break
         else:
             print("Invalid choice")
-            continue
-
-    userstuff = User(username, date_of_birth, address)
-    print(userstuff.user_details())
+            continue"""
+    username, date_of_birth, home_address = verifyLogin()
+    print(username, date_of_birth, home_address)
 
     """
     while True:
