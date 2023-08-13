@@ -30,11 +30,11 @@ def main():
 
 
     user = User(username, date_of_birth, home_address, initial_deposit_amount)
+    bank = Bank(username, date_of_birth, home_address, initial_deposit_amount)
     info = user.user_details()
     print(info)
 
 
-    """
     while True:
 
         print("1. User details")
@@ -46,20 +46,21 @@ def main():
         bank_choice = int(input("Enter your choice: "))
 
         if bank_choice == 1:
-            bank.user_details()
+            info = user.user_details()
+            print(info)
         elif bank_choice == 2:
             deposit_amount = float(input("Enter your deposit amount: "))
-            bank.deposit(deposit_amount)
+            bank.deposit_money(deposit_amount)
         elif bank_choice == 3:
             withdraw_amount = float(input("Enter your withdraw amount: "))
-            bank.withdraw(withdraw_amount)
+            bank.withdraw_money(withdraw_amount)
         elif bank_choice == 4:
-            bank.viewbalance()
+            bank.view_balance()
         elif bank_choice == 5:
             print("Exiting...")
             exit()
         else:
-            print("Invalid choice")"""
+            print("Invalid choice")
 
 
 if __name__ == "__main__":
