@@ -17,9 +17,12 @@ class Bank(User):
         
         
     def deposit_money(self, amount):
-        self.amount = amount
-        self.balance += self.amount
-        print(f"Account balance has been increased by €{self.amount}.")
+        if amount < 0:
+            print("You cannot deposit a negative amount.")
+        else:
+            self.amount = amount
+            self.balance += self.amount
+            print(f"Account balance has been increased by €{self.amount}.")
         
         
     def view_balance(self):
