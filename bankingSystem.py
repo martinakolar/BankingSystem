@@ -14,6 +14,7 @@ class Bank(User):
     def __init__(self, full_name, address, date_of_birth, initial_deposit_amount=0):
         super().__init__(full_name, address, date_of_birth, initial_deposit_amount=0)
         self.balance = initial_deposit_amount
+        self.transaction_history = {"deposits": [], "withdrawal": []}
         
         
     def deposit_money(self, amount):
@@ -22,20 +23,28 @@ class Bank(User):
         else:
             self.amount = amount
             self.balance += self.amount
+            self.transaction_history["deposits"].append(amount)
             print(f"Account balance has been increased by €{self.amount}.")
         
         
+    def withdraw_money(self, amount):
+        if amount < 0:
+            print("You cannot withdraw a negative amount.")
+        else:
+            self.amount = amount
+            
+            if self.amount <= self.balance:
+                self.balance -= self.amount
+                self.transaction_history["withdrawal"].append(amount)
+                print(f"You have successfully withdrawn €{self.amount}.")
+            else:
+                print("Your current balance is lower than the amount you want to withdraw.")
+
     def view_balance(self):
         print(f"Your current account balance is €{self.balance}.")
+
+    def view_transaction_history(self):
+        print(f"Transaction history: \n{self.transaction_history}")
         
-        
-    def withdraw_money(self, amount):
-        self.amount = amount
-        
-        if self.amount <= self.balance:
-            self.balance -= self.amount
-            print(f"You have successfully withdrawn €{self.amount}.")
-        else:
-            print("Your current balance is lower than the amount you want to withdraw.")
-        
+
 
