@@ -23,7 +23,7 @@ class Bank(User):
         else:
             self.amount = amount
             self.balance += self.amount
-            self.transaction_history["deposits"].append(amount)
+            self.transaction_history["deposits"].append(f"€{amount}")
             print(f"Account balance has been increased by €{self.amount}.")
         
         
@@ -35,7 +35,7 @@ class Bank(User):
             
             if self.amount <= self.balance:
                 self.balance -= self.amount
-                self.transaction_history["withdrawal"].append(amount)
+                self.transaction_history["withdrawal"].append(f"€{amount}")
                 print(f"You have successfully withdrawn €{self.amount}.")
             else:
                 print("Your current balance is lower than the amount you want to withdraw.")
