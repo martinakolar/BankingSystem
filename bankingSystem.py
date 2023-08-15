@@ -53,7 +53,8 @@ class Bank(User):
         print(f"Your current account balance is €{self.balance}.")
 
     def view_transaction_history(self):
-        print(f"Transaction history: \n{self.transaction_history}")
+        for key in self.transaction_history:
+            print(key, '->', self.transaction_history[key])
         
 
 
@@ -65,6 +66,5 @@ def appendingToTransactionHistory(transaction_history, type, amount):
     date_and_time = now.strftime("%d.%m.%Y. %H:%M:%S")
  
     # appending an item to the transaction history
-    transaction_history[date_and_time] = [type, f"€{amount}"]
-    print(transaction_history)
+    transaction_history[date_and_time] = f"{type}, €{amount}"
     
