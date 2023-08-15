@@ -6,22 +6,22 @@ from userLogin import verifyLogin
 def main():
     # * log in or register
     while True:            
-        print("Welcome to the Banking System")
+        print("\nWelcome to the Banking System")
         print("1. Register")
         print("2. Log in")
 
-        user_choice = int(input("Enter your choice: "))
-        if user_choice == 1:
+        user_choice = input("\nEnter your choice: ")
+        if user_choice == "1":
             username, date_of_birth, home_address = registration()
             break
-        elif user_choice == 2:
+        elif user_choice == "2":
             username, date_of_birth, home_address = verifyLogin()
             break
         else:
             print("Invalid choice")
             continue
 
-    initial_deposit_bool = input("Do you wish to make an initial deposit? (y/n): ").lower() 
+    initial_deposit_bool = input("\nDo you wish to make an initial deposit? (y/n): ").lower() 
     if initial_deposit_bool == "y":
         initial_deposit_amount = float(input("Enter your initial deposit amount: "))
         print("Initial deposit amount successfully made.")
@@ -35,29 +35,29 @@ def main():
 
     while True:
 
-        print("1. User details")
+        print("\n1. User details")
         print("2. Deposit money")
         print("3. Withdraw money")
         print("4. View balance")
         print("5. View transaction history")
         print("6. Exit")
 
-        bank_choice = int(input("Enter your choice: "))
+        bank_choice = input("\nEnter your choice: ")
 
-        if bank_choice == 1:
+        if bank_choice == "1":
             info = user.user_details()
             print(info)
-        elif bank_choice == 2:
+        elif bank_choice == "2":
             deposit_amount = float(input("Enter your deposit amount: "))
             bank.deposit_money(deposit_amount)
-        elif bank_choice == 3:
+        elif bank_choice == "3":
             withdraw_amount = float(input("Enter your withdraw amount: "))
             bank.withdraw_money(withdraw_amount)
-        elif bank_choice == 4:
+        elif bank_choice == "4":
             bank.view_balance()
-        elif bank_choice == 5:
+        elif bank_choice == "5":
             bank.view_transaction_history()
-        elif bank_choice == 6:
+        elif bank_choice == "6":
             print("Exiting...")
             exit()
         else:
