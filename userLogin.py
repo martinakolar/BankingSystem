@@ -3,6 +3,7 @@ def verifyLogin():
     username = input("Username: ")
     password = input("Password: ")
 
+    attempts = 1
     logged_in = False
 
     with open("userData.txt", "r") as file:
@@ -15,13 +16,34 @@ def verifyLogin():
             if data[0] == username and data[1] == password:
                 print("Login successful!")
                 logged_in = True
-                date_of_birth, home_address = catchOtherInfo(username)
+                return username
+            elif data[0] != username:
+                print("This username doesn't exist.")
+                return False
+            elif data[0] == username and data[1] != password:
+
+                while True:
+                    print(f"Login failed. {attempts}")
+                    username = input("Username: ")
+                    password = input("Password: ")
+
+                    if username == data[0] and password == data[1]:
+                        print("Login successful!")
+                        logged_in = True
+                        return username
+                    else:
+                        attempts += 1
+                        if attempts == 3:
+                            print("Login failed. Account has been temporarily blocked for security reasons.")
+                            return False
+                        else:
+                            continue
 
         if not logged_in:
             print("Login failed.")
+            return False
         file.close()
 
-        return username, date_of_birth, home_address
 
 
 def catchOtherInfo(username):
@@ -38,5 +60,4 @@ def catchOtherInfo(username):
         file.close()
 
     return date_of_birth, home_address
-
 
