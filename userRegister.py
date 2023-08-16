@@ -38,12 +38,15 @@ def registration():
     #*home address
     home_address = input("Home address: ")
 
+    #*initial deposit
+    initial_deposit = str(inputtingInitialDeposit())
+
     with open("userData.txt", "a") as file:
-        file.write(username + "|" + password + "|" + home_address + "|" + date_of_birth + "\n")
+        file.write(username + "|" + password + "|" + home_address + "|" + date_of_birth + "|" + initial_deposit + "\n")
         print("Registration successful!")
     file.close()
 
-    return username, date_of_birth, home_address
+    return username, date_of_birth, home_address, initial_deposit
 
 
 
@@ -57,7 +60,9 @@ def checkingIfUserAlreadyRegistered(username):
                     return False
             else:
                 return True
-            
+
+
+
 
 def getDateOfBirth(username):
     print("Date of birth: ")
@@ -80,5 +85,18 @@ def getDateOfBirth(username):
 
     date_of_birth = f"{day_of_birth}.{month_of_birth}.{year_of_birth}"
     return date_of_birth
+
+
+
+
+def inputtingInitialDeposit():
+    initial_deposit_bool = input("\nDo you wish to make an initial deposit? (y/n): ").lower() 
+    if initial_deposit_bool == "y":
+        initial_deposit_amount = float(input("Enter your initial deposit amount: "))
+        print("Initial deposit amount successfully made.")
+    else:
+        initial_deposit_amount = 0
+
+    return initial_deposit_amount
 
 

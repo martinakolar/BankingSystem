@@ -57,7 +57,8 @@ def catchOtherInfo(username):
             if data[0] == username:
                 date_of_birth = data[2]
                 home_address = data[3]
+                initial_deposit = data[4]
         file.close()
 
-    return date_of_birth, home_address
+    return date_of_birth, home_address, initial_deposit
 

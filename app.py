@@ -1,4 +1,4 @@
-from bankingSystem import User, Bank, inputtingInitialDeposit
+from bankingSystem import User, Bank
 from userRegister import registration
 from userLogin import verifyLogin, catchOtherInfo
 
@@ -14,13 +14,13 @@ def main():
         user_choice = input("\nEnter your choice: ")
 
         if user_choice == "1":
-            username, date_of_birth, home_address = registration()
+            username, date_of_birth, home_address, initial_deposit_amount = registration()
             success = True
             break
 
         elif user_choice == "2":
             username = verifyLogin()
-            if username != False:
+            if username is not False:
                 success = True
                 break
             else:
@@ -31,9 +31,7 @@ def main():
             continue
 
     if success is True:
-        date_of_birth, home_address = catchOtherInfo(username)
-        
-        initial_deposit_amount = inputtingInitialDeposit()
+        date_of_birth, home_address, initial_deposit_amount = catchOtherInfo(username)
 
         user = User(username, date_of_birth, home_address, initial_deposit_amount)
         bank = Bank(username, date_of_birth, home_address, initial_deposit_amount)

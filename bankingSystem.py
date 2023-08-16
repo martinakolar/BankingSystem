@@ -13,9 +13,9 @@ class User():
 
 class Bank(User):
     
-    def __init__(self, full_name, address, date_of_birth, initial_deposit_amount=0):
-        super().__init__(full_name, address, date_of_birth, initial_deposit_amount=0)
-        self.balance = initial_deposit_amount
+    def __init__(self, full_name, address, date_of_birth, initial_deposit_amount):
+        super().__init__(full_name, address, date_of_birth, initial_deposit_amount)
+        self.balance = float(initial_deposit_amount)
         self.transaction_history = {}
         
         
@@ -64,19 +64,6 @@ def appendingToTransactionHistory(transaction_history, type, amount):
 
     # dd/mm/YY H:M
     date_and_time = now.strftime("%d.%m.%Y. %H:%M:%S")
- 
+
     # appending an item to the transaction history
     transaction_history[date_and_time] = f"{type}, €{amount}"
-
-
-
-
-def inputtingInitialDeposit():
-    initial_deposit_bool = input("\nDo you wish to make an initial deposit? (y/n): ").lower() 
-    if initial_deposit_bool == "y":
-        initial_deposit_amount = float(input("Enter your initial deposit amount: "))
-        print("Initial deposit amount successfully made.")
-    else:
-        initial_deposit_amount = 0
-
-    return initial_deposit_amount
