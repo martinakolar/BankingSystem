@@ -1,4 +1,4 @@
-from bankingSystem import User, Bank
+from bankingSystem import User, Bank, inputtingInitialDeposit
 from userRegister import registration
 from userLogin import verifyLogin
 
@@ -21,13 +21,7 @@ def main():
             print("Invalid choice")
             continue
 
-    initial_deposit_bool = input("\nDo you wish to make an initial deposit? (y/n): ").lower() 
-    if initial_deposit_bool == "y":
-        initial_deposit_amount = float(input("Enter your initial deposit amount: "))
-        print("Initial deposit amount successfully made.")
-    else:
-        initial_deposit_amount = 0
-
+    initial_deposit_amount = inputtingInitialDeposit()
 
     user = User(username, date_of_birth, home_address, initial_deposit_amount)
     bank = Bank(username, date_of_birth, home_address, initial_deposit_amount)
