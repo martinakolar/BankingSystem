@@ -49,8 +49,7 @@ def main():
             bank_choice = input("\nEnter your choice: ")
 
             if bank_choice == "1":
-                info = user.user_details()
-                print(info)
+                print(str(user))
             elif bank_choice == "2":
                 deposit_amount = float(input("Enter your deposit amount: "))
                 bank.deposit_money(deposit_amount)

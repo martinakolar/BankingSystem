@@ -8,7 +8,7 @@ class User():
         self.date_of_birth = date_of_birth
         self.initial_deposit_amount = initial_deposit_amount
 
-    def user_details(self):
+    def __str__(self):
         return f"USER DETAILS \nName: {self.full_name} \nAddress: {self.address} \nDate of birth: {self.date_of_birth} \nInitial deposit amount: €{self.initial_deposit_amount}\n"
 
 class Bank(User):
