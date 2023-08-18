@@ -32,8 +32,8 @@ while True:
 if success is True:
     date_of_birth, home_address, initial_deposit_amount = catchOtherInfo(username)
 
-    user = User(username, date_of_birth, home_address, initial_deposit_amount)
     bank = Bank(username, date_of_birth, home_address, initial_deposit_amount)
+    user = User(username, date_of_birth, home_address, initial_deposit_amount)
 
 
     while True:
@@ -56,9 +56,9 @@ if success is True:
             withdraw_amount = float(input("Enter your withdraw amount: "))
             bank.withdraw_money(withdraw_amount)
         elif bank_choice == "4":
-            user.view_balance()
+            bank.view_balance()
         elif bank_choice == "5":
-            user.view_transaction_history()
+            bank.view_transaction_history()
         elif bank_choice == "6":
             print("Exiting...")
             exit()
