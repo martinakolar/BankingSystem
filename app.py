@@ -58,7 +58,7 @@ if success is True:
         elif bank_choice == "4":
             bank.view_balance()
         elif bank_choice == "5":
-            bank.view_transaction_history()
+            user.view_transaction_history()
         elif bank_choice == "6":
             print("Exiting...")
             exit()
