@@ -1,4 +1,5 @@
-from bankingSystem import User, Bank, catchOtherInfo
+from bankingSystem import User, Bank
+from bankingFunctions import catchOtherInfo
 from userRegister import registration
 from userLogin import verifyLogin
 
@@ -39,27 +40,22 @@ if success is True:
     while True:
 
         print("\n1. User details")
-        print("2. Deposit money")
-        print("3. Withdraw money")
-        print("4. View balance")
-        print("5. View transaction history")
-        print("6. Exit")
+        print("2. Money transfer")
+        print("3. View balance")
+        print("4. View transaction history")
+        print("5. Exit")
 
         bank_choice = input("\nEnter your choice: ")
 
         if bank_choice == "1":
             print(str(user))
         elif bank_choice == "2":
-            deposit_amount = float(input("Enter your deposit amount: "))
-            bank.deposit_money(deposit_amount)
+            bank.money_transfer()
         elif bank_choice == "3":
-            withdraw_amount = float(input("Enter your withdraw amount: "))
-            bank.withdraw_money(withdraw_amount)
-        elif bank_choice == "4":
             bank.view_balance()
-        elif bank_choice == "5":
+        elif bank_choice == "4":
             user.view_transaction_history()
-        elif bank_choice == "6":
+        elif bank_choice == "5":
             print("Exiting...")
             exit()
         else:
