@@ -1,3 +1,5 @@
+import bcrypt
+
 def verifyLogin():
     print("LOG IN")
     username = input("Username: ")
@@ -13,36 +15,34 @@ def verifyLogin():
 
             data = line.strip().split("|")
 
-            #logged in at first attempt
-            if data[0] == username and data[1] == password:
-                print("Login successful!")
-                logged_in = True
-                return username
-            
-            elif data[0] != username:
-                print("This username doesn't exist.")
-                return False
-            
-            elif data[0] == username and data[1] != password:
-                while True:
-                    print(f"Login failed. {attempts}")
-                    username = input("Username: ")
-                    password = input("Password: ")
+            #*username exists
+            if data[0] == username:
 
-                    if username == data[0] and password == data[1]:
-                        print("Login successful!")
-                        logged_in = True
-                        return username
-                    else:
-                        attempts += 1
-                        if attempts == 3:
-                            print("Login failed. Account has been temporarily blocked for security reasons.")
-                            return False
+                #*logged in at first attempt
+                if bcrypt.checkpw(password.encode('utf-8'), data[1].encode('utf-8')) is True:
+                    print("Login successful!")
+                    logged_in = True
+                    return username
+                
+                elif bcrypt.checkpw(password.encode('utf-8'), data[1].encode('utf-8')) is not True:
+                    while True:
+                        print(f"Login failed. {attempts}")
+                        password = input("Password: ")
+
+                        if bcrypt.checkpw(password.encode('utf-8'), data[1].encode('utf-8')) is True:
+                            print("Login successful!")
+                            logged_in = True
+                            return username
                         else:
-                            continue
+                            attempts += 1
+                            if attempts == 3:
+                                print("Login failed. Account has been temporarily blocked for security reasons.")
+                                return False
+                            else:
+                                continue
 
-        if not logged_in:
-            print("Login failed.")
-            return False
-        file.close()
 
+    if not logged_in:
+        print("Login failed.")
+        return False
+    file.close()

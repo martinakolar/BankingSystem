@@ -1,3 +1,5 @@
+import bcrypt
+
 def registration():
     print("SIGN UP")
 
@@ -6,13 +8,14 @@ def registration():
     while True:
         username = input("Username: ")
 
-        if checkingIfUserAlreadyRegistered(username) == False:
+        if checkingIfUserAlreadyRegistered(username):
             print("This user has already been registered.")
             continue
 
         if len(username) < min_username_and_password_len:
             print("Username must be at least 4 characters long!")
             continue
+        
         else:
             break
 
@@ -26,6 +29,7 @@ def registration():
 
         confirm_password = input("Confirm password: ")
         if confirm_password == password:
+            hashed_password = bcrypt.hashpw(password.encode('utf8'), bcrypt.gensalt())
             print("Password stored.")
             break
         else:
@@ -42,7 +46,7 @@ def registration():
     initial_deposit = str(inputtingInitialDeposit())
 
     with open("userData.txt", "a") as file:
-        file.write(username + "|" + password + "|" + home_address + "|" + date_of_birth + "|" + initial_deposit + "\n")
+        file.write(username + "|" + hashed_password.decode('utf-8') + "|" + home_address + "|" + date_of_birth + "|" + initial_deposit + "\n")
         print("Registration successful!")
     file.close()
 
@@ -57,9 +61,9 @@ def checkingIfUserAlreadyRegistered(username):
             for line in lines:
                 data = line.strip().split("|")
                 if data[0] == username:
-                    return False
+                    return True
             else:
-                return True
+                return False
 
 
 
@@ -98,5 +102,3 @@ def inputtingInitialDeposit():
         initial_deposit_amount = 0
 
     return initial_deposit_amount
-
-
