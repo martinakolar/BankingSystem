@@ -18,31 +18,41 @@ class Bank():
         
 
     def money_transfer(self):
+
         type = typeOfMoneyTransfer()
-        amount = float(input("Enter the amount to transfer: "))
 
-        if type == "deposit":
-            if amount > 0:
-                self.balance += amount
-                appendingToTransactionHistory(self.transaction_history, type, amount)
-                
-                print(f"Account balance has been increased by €{amount}.")
+        try:
+            amount = float(input("Enter the amount to transfer: "))
 
-            else:
-                print("You cannot deposit a negative amount.")
+        #*invalid input
+        except ValueError:
+            print("Sorry, your input is invalid. Try again.")
 
-        elif type == "withdrawal":
-            if amount > 0:
-                if amount <= self.balance:
-                    self.balance -= amount
+        #*correct input
+        else:
+            
+            if type == "deposit":
+                if amount > 0:
+                    self.balance += amount
                     appendingToTransactionHistory(self.transaction_history, type, amount)
+                    
+                    print(f"Account balance has been increased by €{amount}.")
 
-                    print(f"You have successfully withdrawn €{amount}.")
                 else:
-                    print("Your current balance is lower than the amount you want to withdraw.")
+                    print("You cannot deposit a negative amount.")
 
-            else:
-                print("You cannot withdraw a negative amount.")
+            elif type == "withdrawal":
+                if amount > 0:
+                    if amount <= self.balance:
+                        self.balance -= amount
+                        appendingToTransactionHistory(self.transaction_history, type, amount)
+
+                        print(f"You have successfully withdrawn €{amount}.")
+                    else:
+                        print("Your current balance is lower than the amount you want to withdraw.")
+
+                else:
+                    print("You cannot withdraw a negative amount.")
         
 
     def view_balance(self):
